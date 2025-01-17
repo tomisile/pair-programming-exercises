@@ -3,6 +3,7 @@ name: Extract Weather Reports Data
 on:
   schedule:
     - cron: "20 * * * *" 
+  workflow_dispatch:
 
 jobs: 
   download-weather-report:
