@@ -5,6 +5,9 @@ on:
     - cron: "35 * * * *" 
   workflow_dispatch:
 
+permissions:
+  contents: write
+
 jobs: 
   download-weather-report:
     runs-on: ubuntu-latest
@@ -17,3 +20,14 @@ jobs:
         run: |
           chmod +x script.sh
           ./script.sh
+
+      - name: Configure Git
+        run: |
+          git config --global user.name "github-actions[bot]"
+          git config --global user.email "github-actions[bot]@users.noreply.github.com"
+
+      - name: Commit and push changes
+        run: |
+          git add result.log
+          git commit -m "Update weather report log [skip ci]" || echo "No changes to commit"
+          git push
