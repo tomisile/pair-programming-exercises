@@ -2,7 +2,7 @@ name: Extract Weather Reports Data
 
 on:
   schedule:
-    - cron: "35,40,45,50,55 12 * * *" 
+    - cron: "0,10,20,30,40,50 * * * *" 
 
 jobs: 
   download-weather-report:
